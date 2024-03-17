@@ -1,10 +1,15 @@
+@import "../globals/global.scss";
 .AuthPage {
   width: 100vw;
   height: 100vh;
   background-color: white;
+
   .conatiner {
     display: flex;
     flex-direction: row;
+    @media screen and (max-width: $mbWidth) {
+      flex-direction: column;
+    }
     .sectionOne {
       flex: 1;
       background-color: black;
@@ -45,7 +50,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      @media screen and (max-width: $mbWidth) {
+        padding-top: 1rem;
+      }
       .sectionTwo_wrapper {
+        @media screen and (max-width: $mbWidth) {
+          min-width: 90vw;
+          background-color: white;
+        }
         width: 35vw;
         background-color: white;
         display: flex;
