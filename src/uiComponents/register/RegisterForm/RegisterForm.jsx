@@ -17,7 +17,13 @@ const RegisterForm = () => {
           placeholder="password"
           className={css.inputElement}
         />
-        <button className="primaryButton">Sign up</button>
+        <input
+          type="text"
+          placeholder="Phone Number"
+          className={css.inputElement}
+        />
+
+        <button className="primaryButton">Sign Up</button>
       </form>
     </div>
   );

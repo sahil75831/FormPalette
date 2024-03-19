@@ -5,8 +5,9 @@ import css from "./Auth.module.scss";
 import LoginForm from "./LoginForm/LoginForm";
 import EnterOtp from "../../uiComponents/register/enterOtp/EnterOtp";
 import EmailVerificationMessage from "../register/emailVerificationMessage/EmailVerificationMessage";
+import Link from "next/link";
 
-const AuthPage = ({ type }) => {
+const AuthPage = ({ type, brandLogo, brandName }) => {
   let headContent = "";
   let subHeadContent = "";
   let formType = "";
@@ -28,7 +29,9 @@ const AuthPage = ({ type }) => {
     bottomTextBelowButton = (
       <>
         Already have an account
-        <span>Login </span>
+        <Link href={"/login"}>
+          <span>Login </span>
+        </Link>
       </>
     );
   }
@@ -39,13 +42,15 @@ const AuthPage = ({ type }) => {
     textBelowButton = (
       <>
         Create an account
-        <span>Sign Up</span>
+        <Link href={"/register"} className="link">
+          <span>Sign Up</span>
+        </Link>
       </>
     );
     bottomTextBelowButton = (
-      <>
+      <Link href={"/resetPassword"} className="link">
         <span>Forget Password</span>?
-      </>
+      </Link>
     );
   }
   if (type === "enterotp") {
@@ -59,10 +64,10 @@ const AuthPage = ({ type }) => {
     subHeadContent = "Your password will be reset by email";
     formType = <ResetPassword />;
     textBelowButton = (
-      <>
+      <Link href={"/login"}>
         Back to
         <span>Login</span>
-      </>
+      </Link>
     );
   }
   if (type === "EmailVerificationMessage") {
@@ -73,15 +78,12 @@ const AuthPage = ({ type }) => {
     <div className={css.AuthPage}>
       <div className={css.conatiner}>
         <div className={css.sectionOne}>
-          <div className={css.header}>ACME</div>
+          <div className={css.header}>{brandName}</div>
           <div className={css.logo}>
-            <img
-              src="https://img.freepik.com/premium-vector/logo-that-says-brand-logo-it_562643-4501.jpg"
-              alt="brand image"
-            />
+            <img src={brandLogo} alt="brand image" />
           </div>
           <div className={css.footer}>
-            <span>&copy; ACME Privacy Policy and Cookies Policy</span>
+            <span>&copy; {brandName} Privacy Policy and Cookies Policy</span>
           </div>
         </div>
         <div className={css.sectionTwo}>
