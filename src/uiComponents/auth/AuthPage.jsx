@@ -1,10 +1,10 @@
 import React from "react";
-import RegisterForm from "../register/RegisterForm/RegisterForm";
-import ResetPassword from "../register/resetPassword/ResetPassword";
+import RegisterForm from "../auth/RegisterForm/RegisterForm";
+import ResetPassword from "../auth/resetPassword/ResetPassword";
 import css from "./Auth.module.scss";
 import LoginForm from "./LoginForm/LoginForm";
-import EnterOtp from "../../uiComponents/register/enterOtp/EnterOtp";
-import EmailVerificationMessage from "../register/emailVerificationMessage/EmailVerificationMessage";
+import EnterOtp from "../../uiComponents/auth/enterOtp/EnterOtp";
+import EmailVerificationMessage from "../auth/emailVerificationMessage/EmailVerificationMessage";
 import Link from "next/link";
 
 const AuthPage = ({ type, brandLogo, brandName }) => {

@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { middleware } from "@/middleware";
-
+import { useSearchParams } from "next/navigation";
 import {
   deleteToken,
   generateToken,
@@ -20,9 +20,9 @@ interface CustomNextRequest extends NextRequest {
 export async function POST(req: CustomNextRequest, res: NextResponse) {
   const searchParams = req.nextUrl.searchParams;
   const query = searchParams.get("query");
-  const body = await req.json();
 
   if (query === "register") {
+    const body = await req.json();
     const { name, email, organisation, password, phoneNumber } = body;
     const dataToInsert = await db.user.create({
       data: {
@@ -40,6 +40,7 @@ export async function POST(req: CustomNextRequest, res: NextResponse) {
   }
 
   if (query === "login") {
+    const body = await req.json();
     const { email, password } = body;
     const userWithEmail = await db.user.findUnique({ where: { email } });
     if (
@@ -58,6 +59,14 @@ export async function POST(req: CustomNextRequest, res: NextResponse) {
     }
   }
 
+  if (query === "resetPassword") {
+    const body = await req.json();
+    const { email, newPassword } = body;
+    const userWithEmail = await db.user.findUnique({ where: { email } });
+
+    // sandgrid nodemailer
+  }
+
   if (query === "logout") {
     await deleteToken();
     return new Response(
@@ -67,6 +76,5 @@ export async function POST(req: CustomNextRequest, res: NextResponse) {
 }
 
 export async function GET(req: CustomNextRequest, res: NextResponse) {
-  // await middleware(req, res); // Invoking the middleware function here
-  return new Response(JSON.stringify({ user: req.loggedInUserId }));
+  return new Response(JSON.stringify({ user: "application working.." }));
 }

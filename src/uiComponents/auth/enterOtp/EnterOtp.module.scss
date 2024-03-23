@@ -1,11 +1,10 @@
-.EnterOtp {
-  // background-color: greenyellow;
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 70%;
   gap: 2rem;
-  .wrapper {
+  .container {
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -33,5 +32,9 @@
   }
   > button {
     width: 100%;
+  }
+  > h6 {
+    font-style: italic;
+    font-size: 1.1rem;
   }
 }

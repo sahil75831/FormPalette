@@ -1,13 +1,13 @@
 import AuthPage from "@/uiComponents/auth/AuthPage";
 
-const RegisterPage = () => {
+const InterceptedVerificationpage = () => {
   return (
     <AuthPage
-      type={"register"}
+      type={"enterotp"}
       brandLogo={"https://digiexcel.in/wp-content/uploads/2023/02/logo.png"}
       brandName={"DigiExcel"}
     />
   );
 };
 
-export default RegisterPage;
+export default InterceptedVerificationpage;

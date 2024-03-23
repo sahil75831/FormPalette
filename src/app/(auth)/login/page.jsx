@@ -1,4 +1,4 @@
-import AuthPage from "@/uiComponents/register/AuthPage";
+import AuthPage from "@/uiComponents/auth/AuthPage";
 
 const LoginPage = () => {
   return (

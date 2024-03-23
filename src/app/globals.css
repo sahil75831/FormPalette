@@ -27,6 +27,31 @@
   text-decoration: none;
   color: inherit;
 }
+.error-message {
+  color: white;
+  font-size: 1rem;
+  margin-top: -10px;
+  font-style: italic;
+  /* display: none; */
+  /* transform: translateY(-45px); */
+  /* visibility: hidden; */
+  /* content: none; */
+  line-height: 0px;
+  font-size: 0px;
+  transition: all 0.8s ease;
+}
+.green-message {
+  color: green;
+  font-size: 1.2rem;
+  font-style: italic;
+  transition: all 0.8s ease;
+}
+input:invalid[focused="true"] + .error-message {
+  /* visibility: visible; */
+  line-height: normal;
+  color: red;
+  font-size: 1rem;
+}
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
