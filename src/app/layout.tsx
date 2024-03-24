@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-
+import { AuthWrapper } from "../utils/AuthContext";
+import ProtectedRoute from "@/utils/ProtectedRoute";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthWrapper>{children}</AuthWrapper>
+      </body>
     </html>
   );
 }

@@ -3,9 +3,13 @@ import React, { useState } from "react";
 import css from "./LoginForm.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/utils/AuthContext";
 
 const LoginForm = () => {
-  // const [successMessage, setSuccessMessage] = useState(false);
+  const [user, setUser] = useState("");
+  const auth = useAuth();
+
+  const [successMessage, setSuccessMessage] = useState(false);
   const [focused, setFocused] = useState({
     email: false,
     password: false,
@@ -29,8 +33,14 @@ const LoginForm = () => {
         body: JSON.stringify(formValues),
       });
       if (response.ok) {
-        console.log("response.json() : ", await response.json());
-        router.push("/dashboard");
+        setSuccessMessage(true);
+        const data = await response.json();
+        console.log("dataa : ", data);
+        const userData = data.user;
+        localStorage.setItem("digiExcel_user", JSON.stringify(userData));
+
+        // auth.login(userData);
+        router.replace("/dashboard");
       } else {
         console.log("response.status : ", response.status);
         throw new Error("error in form submit during login");
@@ -57,6 +67,9 @@ const LoginForm = () => {
           focused={focused.email.toString()}
           pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" // this will elemenate the double usage of @
         />
+        <span className="error-message">
+          It should be a valid email address
+        </span>
         <input
           type="password"
           placeholder="password"
@@ -69,6 +82,11 @@ const LoginForm = () => {
           focused={focused.password.toString()}
           pattern="(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$"
         />
+        <span className="error-message">
+          Password should be least 8 characters long, min 1 Uppercase, 1
+          Lowercase, 1 Number, 1 special character and only contains symbols
+          from the alphabet.
+        </span>
         {/* <Link href={"/login/verification"}> */}
 
         <button className="primaryButton" type="submit">
@@ -76,6 +94,9 @@ const LoginForm = () => {
         </button>
         {/* </Link> */}
       </form>
+      {successMessage && (
+        <span className="green-message">Login Successfull</span>
+      )}
     </div>
   );
 };

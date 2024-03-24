@@ -58,7 +58,7 @@ const RegisterForm = () => {
           required={true}
           onBlur={handleBlur}
           focused={focused.name.toString()}
-          pattern="^[A-Za-z0-9]{3,16}$"
+          pattern="^[A-Za-z0-9\s]{3,16}$"
         />
         <span className="error-message">
           Name must be 3 - 16 characters long and dont containe any special
@@ -89,7 +89,7 @@ const RegisterForm = () => {
           required={true}
           onBlur={handleBlur}
           focused={focused.organisation.toString()}
-          pattern="^[A-Za-z0-9]{3,100}$"
+          pattern="^.{3,50}$"
         />
         <span className="error-message">
           Organisation Name must be 3 to 100 characters long.

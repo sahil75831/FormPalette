@@ -1,10 +1,12 @@
 import React from "react";
 import RegisterForm from "../auth/RegisterForm/RegisterForm";
 import ResetPassword from "../auth/resetPassword/ResetPassword";
+import ChangePassword from "../auth/resetPassword/changePassword/ChangePassword";
 import css from "./Auth.module.scss";
 import LoginForm from "./LoginForm/LoginForm";
 import EnterOtp from "../../uiComponents/auth/enterOtp/EnterOtp";
 import EmailVerificationMessage from "../auth/emailVerificationMessage/EmailVerificationMessage";
+
 import Link from "next/link";
 
 const AuthPage = ({ type, brandLogo, brandName }) => {
@@ -63,6 +65,17 @@ const AuthPage = ({ type, brandLogo, brandName }) => {
     headContent = "Reset Password";
     subHeadContent = "Your password will be reset by email";
     formType = <ResetPassword />;
+    textBelowButton = (
+      <Link href={"/login"}>
+        Back to
+        <span>Login</span>
+      </Link>
+    );
+  }
+  if (type === "changePassowrd") {
+    headContent = "Reset Password";
+    subHeadContent = "Your password will be reset by email";
+    formType = <ChangePassword />;
     textBelowButton = (
       <Link href={"/login"}>
         Back to

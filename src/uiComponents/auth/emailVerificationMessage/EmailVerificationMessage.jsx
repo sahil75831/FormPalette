@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import css from "./EmailVerificationMessage.module.scss";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const EmailVerificationMessage = () => {
   const [isLinkClicked, setIsLinkClicked] = useState(false);
@@ -38,7 +39,9 @@ const EmailVerificationMessage = () => {
               Your email has been verefied. You can continue using the
               application
             </span>
-            <button className="primaryButton">Go to Application</button>
+            <Link href={"/"}>
+              <button className="primaryButton">Go to Application</button>
+            </Link>
           </>
         )}
       </div>
