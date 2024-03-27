@@ -24,3 +24,10 @@ export default function RootLayout({
     </html>
   );
 }
+// model Porjects {
+
+// }
+
+// projetcts/add/id  >> listing of all projects
+// add new project button
+// new page > project name, desc, // db status is live,draft 

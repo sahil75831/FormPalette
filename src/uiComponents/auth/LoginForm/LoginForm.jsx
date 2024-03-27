@@ -40,7 +40,7 @@ const LoginForm = () => {
         localStorage.setItem("digiExcel_user", JSON.stringify(userData));
 
         // auth.login(userData);
-        router.replace("/dashboard");
+        router.push("/dashboard");
       } else {
         console.log("response.status : ", response.status);
         throw new Error("error in form submit during login");
